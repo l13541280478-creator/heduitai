@@ -1,0 +1,49 @@
+name: 配置服务询价
+description: 仅提供表头和合成样例，先确认范围与可行性。
+title: "[配置询价] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        通用工具免费：[在线试用](https://heduitai-orders.copperdace20.chatgpt.site)。
+        此表是公开询价入口，提交不代表下单。请只提供列名与合成示例，不填写姓名、电话、地址、账号密码、真实订单号或交易流水。不要上传完整业务文件。
+        配置服务拟定价：单流程499元，现有能力内最多三套映射999元；先确认范围，交易和收款另行确认。
+  - type: dropdown
+    id: tier
+    attributes:
+      label: 希望了解的服务
+      options:
+        - 先判断免费工具是否适用
+        - 单流程配置（499元）
+        - 最多三套映射配置（999元）
+    validations:
+      required: true
+  - type: textarea
+    id: structure
+    attributes:
+      label: 两张表的字段名与数据规模
+      placeholder: "左表[订单号,应收金额]；右表[商户订单号,结算净额]，各约3000行，CSV或XLSX，单一币种。"
+    validations:
+      required: true
+  - type: textarea
+    id: rules
+    attributes:
+      label: 希望采用的核对规则
+      placeholder: "一单一行或同单多行合计；金额口径、退款符号、容差、是否忽略订单号首尾空格。"
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: 合成示例与手工预期结果
+      description: 请用虚构编号和金额表达结构；不需要个人资料或实际订单。
+      placeholder: "左：DEMO-01 100.00，右：DEMO-01 90.00；预期为差额10.00元。"
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我知道内容公开，已只保留字段名与合成示例，未包含个人资料、账号凭据或真实交易明细。
+          required: true
